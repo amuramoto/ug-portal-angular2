@@ -1,0 +1,15 @@
+.leftNav-container {
+  background: #BBBBBB;
+  height: 100%;
+}
+
+ul {
+  padding: 0px;
+}
+
+li {
+  list-style: none;
+  height: 40px;
+  border: #FFFFFF 1px solid;  
+  padding: 10px;
+}
