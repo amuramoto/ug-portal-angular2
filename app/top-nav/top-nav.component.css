@@ -1,4 +1,11 @@
 .topNav-container {
-  background: #AAAAAA;
+  background: #2481A6;
+  border-bottom: #124255 1px solid;
+  padding: 5px 20px;
   height: 40px;
+}
+
+.logo {
+  height: 30px;
+  background: url(/img/apache_usergrid_logo_white.png) no-repeat;
 }

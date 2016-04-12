@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router'], function(exports_1, context_1) {
+System.register(['angular2/core'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,41 +10,29 @@ System.register(['angular2/core', 'angular2/router'], function(exports_1, contex
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1;
-    var LeftNavComponent;
+    var core_1;
+    var DataComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
-            },
-            function (router_1_1) {
-                router_1 = router_1_1;
             }],
         execute: function() {
-            LeftNavComponent = (function () {
-                function LeftNavComponent() {
-                    this.menuItems = [
-                        'Dashboard',
-                        'Data',
-                        'Users',
-                        'Push Notifications',
-                        'Activities'
-                    ];
+            DataComponent = (function () {
+                function DataComponent() {
                 }
-                LeftNavComponent = __decorate([
+                DataComponent = __decorate([
                     core_1.Component({
-                        selector: 'ug-left-nav',
-                        directives: [router_1.ROUTER_DIRECTIVES],
-                        providers: [router_1.ROUTER_PROVIDERS],
-                        templateUrl: 'app/left-nav/left-nav.component.html',
-                        styleUrls: ['app/left-nav/left-nav.component.css']
+                        selector: 'ug-data',
+                        templateUrl: 'app/data/data.component.html',
+                        styleUrls: ['app/data/data.component.css']
                     }), 
                     __metadata('design:paramtypes', [])
-                ], LeftNavComponent);
-                return LeftNavComponent;
+                ], DataComponent);
+                return DataComponent;
             }());
-            exports_1("LeftNavComponent", LeftNavComponent);
+            exports_1("DataComponent", DataComponent);
         }
     }
 });
-//# sourceMappingURL=left-nav.component.js.map
+//# sourceMappingURL=data.component.js.map

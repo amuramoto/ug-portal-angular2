@@ -1,15 +1,28 @@
 .leftNav-container {
-  background: #BBBBBB;
+  background: #73AEC6;
   height: 100%;
+  min-width: 200px;
+}
+
+a {
+  display: block;
+  color: #FFFFFF;
+  font-weight: 400;
 }
 
 ul {
   padding: 0px;
+  border-right: #509AB8 1px solid;
 }
 
 li {
+  line-height: 40px;
   list-style: none;
   height: 40px;
-  border: #FFFFFF 1px solid;  
-  padding: 10px;
+  padding: 0px 15px;
+  border-bottom: #FFFFFF 1px solid;
+}
+
+li a {
+  vertical-align: middle;
 }
