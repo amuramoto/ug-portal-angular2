@@ -30,8 +30,9 @@ System.register(['angular2/core', 'angular2/http', 'app/ug-settings.service'], f
             UGHttpClient = (function () {
                 function UGHttpClient(_http) {
                     this._http = _http;
-                    console.log(new ug_settings_service_1.UGSettings());
-                    this.baseUrl = 'ss';
+                    var ugSettings = new ug_settings_service_1.UGSettings();
+                    this.baseUrl = ugSettings.apiUrl;
+                    console.log(this.baseUrl);
                 }
                 UGHttpClient.prototype.get = function (url) {
                     return this._http.get(this.baseUrl + url);

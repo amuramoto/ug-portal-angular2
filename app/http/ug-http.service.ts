@@ -4,9 +4,10 @@ import { UGSettings } from 'app/ug-settings.service';
 
 @Injectable()
 export class UGHttpClient {
-  constructor(@Inject(Http) private _http: Http) {        
-    console.log(new UGSettings());
-    this.baseUrl = 'ss'
+  constructor(@Inject(Http) private _http: Http) {
+    let ugSettings = new UGSettings();
+    this.baseUrl = ugSettings.apiUrl;
+    console.log(this.baseUrl);
   }
 
   get(url: string) {
