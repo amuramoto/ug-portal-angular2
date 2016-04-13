@@ -1,4 +1,4 @@
-System.register(['angular2/core'], function(exports_1, context_1) {
+System.register(['angular2/core', 'app/login/login.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,30 +10,35 @@ System.register(['angular2/core'], function(exports_1, context_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1;
-    var DataComponent;
+    var core_1, login_service_1;
+    var LoginComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (login_service_1_1) {
+                login_service_1 = login_service_1_1;
             }],
         execute: function() {
-            DataComponent = (function () {
-                function DataComponent() {
-                    console.log('ss');
+            LoginComponent = (function () {
+                function LoginComponent(loginService) {
+                    this.loginService = loginService;
                 }
-                DataComponent = __decorate([
+                LoginComponent = __decorate([
                     core_1.Component({
-                        selector: 'ug-data',
-                        templateUrl: 'app/data/data.component.html',
-                        styleUrls: ['app/data/data.component.css']
+                        selector: 'ug-login',
+                        providers: [login_service_1.LoginService],
+                        templateUrl: 'app/login/login.component.html',
+                        styleUrls: ['app/login/login.component.css']
                     }), 
-                    __metadata('design:paramtypes', [])
-                ], DataComponent);
-                return DataComponent;
+                    __metadata('design:paramtypes', [(typeof (_a = typeof login_service_1.LoginService !== 'undefined' && login_service_1.LoginService) === 'function' && _a) || Object])
+                ], LoginComponent);
+                return LoginComponent;
+                var _a;
             }());
-            exports_1("DataComponent", DataComponent);
+            exports_1("LoginComponent", LoginComponent);
         }
     }
 });
-//# sourceMappingURL=data.component.js.map
+//# sourceMappingURL=login.component.js.map

@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', 'app/left-nav/left-nav.component', 'app/top-nav/top-nav.component', 'app/data/data.component'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', 'app/left-nav/left-nav.component', 'app/top-nav/top-nav.component', 'app/login/login.component', 'app/data/data.component', 'app/dashboard/dashboard.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/router', 'app/left-nav/left-nav.comp
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, left_nav_component_1, top_nav_component_1, data_component_1;
+    var core_1, router_1, left_nav_component_1, top_nav_component_1, login_component_1, data_component_1, dashboard_component_1;
     var AppComponent;
     return {
         setters:[
@@ -26,8 +26,14 @@ System.register(['angular2/core', 'angular2/router', 'app/left-nav/left-nav.comp
             function (top_nav_component_1_1) {
                 top_nav_component_1 = top_nav_component_1_1;
             },
+            function (login_component_1_1) {
+                login_component_1 = login_component_1_1;
+            },
             function (data_component_1_1) {
                 data_component_1 = data_component_1_1;
+            },
+            function (dashboard_component_1_1) {
+                dashboard_component_1 = dashboard_component_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
@@ -41,6 +47,8 @@ System.register(['angular2/core', 'angular2/router', 'app/left-nav/left-nav.comp
                         directives: [router_1.ROUTER_DIRECTIVES, left_nav_component_1.LeftNavComponent, top_nav_component_1.TopNavComponent]
                     }),
                     router_1.RouteConfig([
+                        { path: '/', name: 'Test', component: dashboard_component_1.DashboardComponent, useAsDefault: true },
+                        { path: '/login', name: 'Login', component: login_component_1.LoginComponent },
                         { path: '/data', name: 'Data', component: data_component_1.DataComponent }
                     ]), 
                     __metadata('design:paramtypes', [])

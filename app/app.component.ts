@@ -2,7 +2,9 @@ import { Component } from 'angular2/core';
 import { RouteConfig, ROUTER_DIRECTIVES } from 'angular2/router';
 import { LeftNavComponent } from 'app/left-nav/left-nav.component';
 import { TopNavComponent } from 'app/top-nav/top-nav.component';
-import { DataComponent } from 'app/data/data.component'
+import { LoginComponent } from 'app/login/login.component';
+import { DataComponent } from 'app/data/data.component';
+import { DashboardComponent } from 'app/dashboard/dashboard.component'
 
 @Component({
   selector: 'ug-portal',
@@ -11,6 +13,8 @@ import { DataComponent } from 'app/data/data.component'
   directives: [ROUTER_DIRECTIVES, LeftNavComponent, TopNavComponent]  
 })
 @RouteConfig([
+  {path:'/', name: 'Test', component: DashboardComponent, useAsDefault: true},
+  {path:'/login', name: 'Login', component: LoginComponent}
   {path:'/data', name: 'Data', component: DataComponent}
 ])
 
