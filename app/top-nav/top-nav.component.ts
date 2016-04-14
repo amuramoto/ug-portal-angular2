@@ -5,4 +5,9 @@ import {Component} from 'angular2/core';
   templateUrl: 'app/top-nav/top-nav.component.html',
   styleUrls: ['app/top-nav/top-nav.component.css']
 })
-export class TopNavComponent { }
+
+export class TopNavComponent {
+
+    
+
+}

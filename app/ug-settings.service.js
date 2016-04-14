@@ -10,7 +10,7 @@ System.register([], function(exports_1, context_1) {
                     var org = 'amuramoto';
                     var app = 'sandbox';
                     var baseurl = 'http://api.usergrid.com';
-                    this.apiUrl = baseurl + "/" + org + "/" + app + "/";
+                    this.apiUrl = baseurl + "/" + org + "/" + app;
                 }
                 return UGSettings;
             }());

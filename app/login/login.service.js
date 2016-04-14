@@ -34,7 +34,7 @@ System.register(['angular2/core', 'app/http/ug-http.service'], function(exports_
                         "username": "username",
                         "password": password
                     };
-                    this._http.post('/token', body)
+                    return this._http.post('/token', body)
                         .map(function (res) { return console.log(res.json()); }, function (err) { return console.log(err); }, function () { return console.log('login successful'); });
                 };
                 LoginService.prototype.logout = function () {

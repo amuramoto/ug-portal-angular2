@@ -22,9 +22,13 @@ System.register(['angular2/core', 'app/login/login.service'], function(exports_1
             }],
         execute: function() {
             LoginComponent = (function () {
-                function LoginComponent(loginService) {
-                    this.loginService = loginService;
+                function LoginComponent(_loginService) {
+                    this._loginService = _loginService;
                 }
+                LoginComponent.prototype.login = function () {
+                    this._loginService.login()
+                        .subscribe(function (res) { return console.log(res); }, function (err) { return console.log(err); });
+                };
                 LoginComponent = __decorate([
                     core_1.Component({
                         selector: 'ug-login',

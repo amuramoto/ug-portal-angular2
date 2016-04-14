@@ -3,7 +3,7 @@ export class UGSettings {
     let org = 'amuramoto';
     let app = 'sandbox';
     let baseurl = 'http://api.usergrid.com';
-    this.apiUrl = `${baseurl}/${org}/${app}/`;
+    this.apiUrl = `${baseurl}/${org}/${app}`;
   }
 
 }

@@ -1,4 +1,5 @@
 .topNav-container {
+  position: fixed;
   background: #2481A6;
   border-bottom: #124255 1px solid;
   padding: 5px 20px;

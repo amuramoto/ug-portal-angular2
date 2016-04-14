@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', 'app/app.component'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/router', 'app/app.component'], funct
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, app_component_1;
+    var core_1, router_1;
     var LeftNavComponent;
     return {
         setters:[
@@ -19,14 +19,16 @@ System.register(['angular2/core', 'angular2/router', 'app/app.component'], funct
             },
             function (router_1_1) {
                 router_1 = router_1_1;
-            },
-            function (app_component_1_1) {
-                app_component_1 = app_component_1_1;
             }],
         execute: function() {
             LeftNavComponent = (function () {
                 function LeftNavComponent(_router) {
                     this._router = _router;
+                    _router.subscribe(function (url) {
+                        _router.recognize(url).then(function (instruction) {
+                            console.log(instruction);
+                        });
+                    });
                     this.menuItems = [
                         'Dashboard',
                         'Data',
@@ -35,8 +37,9 @@ System.register(['angular2/core', 'angular2/router', 'app/app.component'], funct
                         'Activities'
                     ];
                 }
-                LeftNavComponent.prototype.gotoData = function () {
-                    this._router.navigateByUrl('../Data');
+                LeftNavComponent.prototype.setSelectedView = function (selectedView) {
+                    this.selectedView = selectedView;
+                    console.log(this.selectedView);
                 };
                 LeftNavComponent = __decorate([
                     core_1.Component({
@@ -44,10 +47,7 @@ System.register(['angular2/core', 'angular2/router', 'app/app.component'], funct
                         directives: [router_1.ROUTER_DIRECTIVES],
                         templateUrl: 'app/left-nav/left-nav.component.html',
                         styleUrls: ['app/left-nav/left-nav.component.css']
-                    }),
-                    router_1.RouteConfig([
-                        { path: '/', name: 'Test', component: app_component_1.AppComponent, useAsDefault: true }
-                    ]), 
+                    }), 
                     __metadata('design:paramtypes', [router_1.Router])
                 ], LeftNavComponent);
                 return LeftNavComponent;

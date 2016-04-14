@@ -3,12 +3,14 @@
   height: 100%;
   min-width: 200px;
   position: fixed;
+  top: 40px;
 }
 
 a {
   display: block;
   color: #FFFFFF;
   font-weight: 400;
+  text-decoration: none;
 }
 
 ul {
@@ -24,6 +26,14 @@ li {
   border-bottom: #FFFFFF 1px solid;
 }
 
+li:hover {
+  background-color: #509AB8;
+}
+
 li a {
   vertical-align: middle;
+}
+
+li.selected {
+  background-color: #1D6785;
 }

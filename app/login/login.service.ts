@@ -14,7 +14,7 @@ export class LoginService {
       "password": password
     };
 
-    this._http.post('/token', body)
+    return this._http.post('/token', body)
       .map(
         res => console.log(res.json()),
         err => console.log(err),
