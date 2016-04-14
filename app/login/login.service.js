@@ -27,23 +27,26 @@ System.register(['angular2/core', 'app/http/ug-http.service'], function(exports_
             LoginService = (function () {
                 function LoginService(_http) {
                     this._http = _http;
+                    this.access_token;
                 }
                 LoginService.prototype.login = function (username, password) {
+                    var _this = this;
                     var body = {
                         "grant_type": "password",
-                        "username": "username",
+                        "username": username,
                         "password": password
                     };
                     return this._http.post('/token', body)
-                        .map(function (res) { return console.log(res.json()); }, function (err) { return console.log(err); }, function () { return console.log('login successful'); });
+                        .map(function (res) { return _this.setToken(res.json().access_token); }, function (err) { return console.log(err); }, function () { return console.log('login successful'); });
                 };
                 LoginService.prototype.logout = function () {
                 };
                 LoginService.prototype.getToken = function () {
-                    return this._token;
+                    return this.access_token;
                 };
                 LoginService.prototype.setToken = function (token) {
-                    this._token = token;
+                    console.log(token);
+                    this.access_token = token;
                 };
                 LoginService.prototype.isAuthenticated = function (token) {
                     return this._authenticated;

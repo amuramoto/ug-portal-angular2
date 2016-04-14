@@ -24,9 +24,11 @@ System.register(['angular2/core', 'app/login/login.service'], function(exports_1
             LoginComponent = (function () {
                 function LoginComponent(_loginService) {
                     this._loginService = _loginService;
+                    this.username;
+                    this.password;
                 }
                 LoginComponent.prototype.login = function () {
-                    this._loginService.login()
+                    this._loginService.login(this.username, this.password)
                         .subscribe(function (res) { return console.log(res); }, function (err) { return console.log(err); });
                 };
                 LoginComponent = __decorate([

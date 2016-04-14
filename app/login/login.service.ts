@@ -4,19 +4,21 @@ import { UGHttpClient } from 'app/http/ug-http.service';
 @Injectable()
 export class LoginService {
   
-  constructor (@Inject(UGHttpClient) private _http: UGHttpClient) {}
+  constructor (@Inject(UGHttpClient) private _http: UGHttpClient) {
+    this.access_token;
+  }
 
-  login(username: string, password: string) {
-    
+  login(username, password) {
+
     let body = {
       "grant_type": "password",
-      "username": "username",
+      "username": username,
       "password": password
     };
 
     return this._http.post('/token', body)
       .map(
-        res => console.log(res.json()),
+        res => this.setToken(res.json().access_token),
         err => console.log(err),
         () => console.log('login successful')
       )
@@ -27,11 +29,12 @@ export class LoginService {
   }
 
   getToken() {
-    return this._token;
+    return this.access_token;
   }
 
-  private setToken (token: string) {
-    this._token = token;
+  setToken (token: string) {
+  console.log(token);
+    this.access_token = token;
   }
 
   isAuthenticated (token: string) {

@@ -32,21 +32,20 @@ System.register(['angular2/core', 'angular2/http', 'app/ug-settings.service'], f
                     this._http = _http;
                     var ugSettings = new ug_settings_service_1.UGSettings();
                     this.baseUrl = ugSettings.apiUrl;
-                    console.log(this.baseUrl);
                 }
                 UGHttpClient.prototype.get = function (url) {
                     return this._http.get(this.baseUrl + url);
                 };
                 ;
                 UGHttpClient.prototype.post = function (url, body, options) {
-                    return this._http.post(this.baseUrl + url, body);
+                    return this._http.post(this.baseUrl + url, JSON.stringify(body));
                 };
                 ;
                 UGHttpClient.prototype.put = function (url, body, options) {
-                    return this._http.put(this.baseUrl + url, body);
+                    return this._http.put(this.baseUrl + url, JSON.stringify(body));
                 };
                 ;
-                UGHttpClient.prototype.del = function (url) {
+                UGHttpClient.prototype.delete = function (url) {
                     return this._http.delete(this.baseUrl + url);
                 };
                 ;

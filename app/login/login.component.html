@@ -1,6 +1,6 @@
 <div class="loginBox">
-  Username: <input />
-  Password: <input />
+  Username: <input [(ngModel)]="username" />
+  Password: <input [(ngModel)]="password" />
   <button>Signup</button>
   <button (click)="login()">Login</button>
 </div>

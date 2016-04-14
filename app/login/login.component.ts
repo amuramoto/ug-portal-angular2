@@ -10,10 +10,13 @@ import { LoginService } from 'app/login/login.service';
 
 export class LoginComponent { 
 
-  constructor (private _loginService: LoginService) {}
+  constructor (private _loginService: LoginService) {
+    this.username;
+    this.password;
+  }
 
   login () {
-    this._loginService.login()
+    this._loginService.login(this.username, this.password)
       .subscribe (
         res => console.log(res),
         err => console.log(err)

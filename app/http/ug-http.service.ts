@@ -7,7 +7,6 @@ export class UGHttpClient {
   constructor(@Inject(Http) private _http: Http) {
     let ugSettings = new UGSettings();
     this.baseUrl = ugSettings.apiUrl;
-    console.log(this.baseUrl);
   }
 
   get(url: string) {
@@ -15,14 +14,14 @@ export class UGHttpClient {
   };
 
   post(url: string, body: object, options: object) {  
-    return this._http.post(this.baseUrl + url, body);
+    return this._http.post(this.baseUrl + url, JSON.stringify(body));
   };
 
   put(url: string, body: object, options: object) {
-    return this._http.put(this.baseUrl + url, body);
+    return this._http.put(this.baseUrl + url, JSON.stringify(body));
   };
 
-  del(url: string) {
+  delete(url: string) {
     return this._http.delete(this.baseUrl + url);
   };
 }
