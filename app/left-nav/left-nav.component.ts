@@ -4,8 +4,7 @@ import { DataComponent } from 'app/data/data.component'
 import { AppComponent } from 'app/app.component'
 @Component({
   selector: 'ug-left-nav',
-  directives: [ ROUTER_DIRECTIVES, RouterLink ],
-  providers: [ ROUTER_PROVIDERS ],
+  directives: [ ROUTER_DIRECTIVES ],
   templateUrl: 'app/left-nav/left-nav.component.html',
   styleUrls: [ 'app/left-nav/left-nav.component.css' ]
 

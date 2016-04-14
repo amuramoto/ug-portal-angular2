@@ -41,8 +41,7 @@ System.register(['angular2/core', 'angular2/router', 'app/app.component'], funct
                 LeftNavComponent = __decorate([
                     core_1.Component({
                         selector: 'ug-left-nav',
-                        directives: [router_1.ROUTER_DIRECTIVES, router_1.RouterLink],
-                        providers: [router_1.ROUTER_PROVIDERS],
+                        directives: [router_1.ROUTER_DIRECTIVES],
                         templateUrl: 'app/left-nav/left-nav.component.html',
                         styleUrls: ['app/left-nav/left-nav.component.css']
                     }),
