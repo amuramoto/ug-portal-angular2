@@ -30,14 +30,13 @@ System.register(['angular2/core', 'app/http/ug-http.service'], function(exports_
                     this.access_token;
                 }
                 LoginService.prototype.login = function (username, password) {
-                    var _this = this;
-                    var body = {
+                    var credentials = {
                         "grant_type": "password",
                         "username": username,
                         "password": password
                     };
-                    return this._http.post('/token', body)
-                        .map(function (res) { return _this.setToken(res.json().access_token); }, function (err) { return console.log(err); }, function () { return console.log('login successful'); });
+                    return this._http.post('/token', credentials)
+                        .map(function (res) { return res.json().access_token; });
                 };
                 LoginService.prototype.logout = function () {
                 };
@@ -45,7 +44,6 @@ System.register(['angular2/core', 'app/http/ug-http.service'], function(exports_
                     return this.access_token;
                 };
                 LoginService.prototype.setToken = function (token) {
-                    console.log(token);
                     this.access_token = token;
                 };
                 LoginService.prototype.isAuthenticated = function (token) {

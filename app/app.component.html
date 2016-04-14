@@ -2,10 +2,12 @@
   <ug-top-nav></ug-top-nav>  
 </div>
 <div class="row">
-  <div class="leftNav col-xs-2">
-    <ug-left-nav></ug-left-nav>
+  <div *ngIf="currentPath != '/login'">
+    <div class="col-xs-2">
+      <ug-left-nav></ug-left-nav>
+    </div>
   </div>
-  <div class="content col-xs-10 col-xs-offset-2">
+  <div class="content col-xs-10">
     <router-outlet></router-outlet>
   </div>
 </div>

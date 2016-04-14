@@ -9,19 +9,14 @@ export class LoginService {
   }
 
   login(username, password) {
-
-    let body = {
+    let credentials = {
       "grant_type": "password",
       "username": username,
       "password": password
     };
 
-    return this._http.post('/token', body)
-      .map(
-        res => this.setToken(res.json().access_token),
-        err => console.log(err),
-        () => console.log('login successful')
-      )
+    return this._http.post('/token', credentials)
+      .map(res => res.json().access_token)       
   }
 
   logout() {
@@ -32,8 +27,7 @@ export class LoginService {
     return this.access_token;
   }
 
-  setToken (token: string) {
-  console.log(token);
+  private setToken (token: string) {
     this.access_token = token;
   }
 

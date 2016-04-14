@@ -37,7 +37,10 @@ System.register(['angular2/core', 'angular2/router', 'app/left-nav/left-nav.comp
             }],
         execute: function() {
             AppComponent = (function () {
-                function AppComponent() {
+                function AppComponent(_location) {
+                    this._location = _location;
+                    this.currentPath = _location.path();
+                    ;
                 }
                 AppComponent = __decorate([
                     core_1.Component({
@@ -51,7 +54,7 @@ System.register(['angular2/core', 'angular2/router', 'app/left-nav/left-nav.comp
                         { path: '/login', name: 'Login', component: login_component_1.LoginComponent },
                         { path: '/data', name: 'Data', component: data_component_1.DataComponent }
                     ]), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [router_1.Location])
                 ], AppComponent);
                 return AppComponent;
             }());

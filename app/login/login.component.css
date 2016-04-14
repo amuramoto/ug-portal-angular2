@@ -1,8 +1,9 @@
-.leftNav-container {
-  background: #73AEC6;
-  height: 100%;
-  min-width: 200px;
+.loginContainer {
+  border: #73AEC6 1px solid;  
+  border-radius: 2px;
   position: fixed;
+  padding: 25px;
+  width: 350px;
 }
 
 a {
@@ -26,4 +27,25 @@ li {
 
 li a {
   vertical-align: middle;
+}
+
+.loginField {
+  margin-bottom: 15px;
+}
+
+.loginFieldLabel {
+  margin-bottom: 5px;
+}
+
+.loginButtons {
+  margin-top: 15px;
+  float: right;
+}
+
+.registerButton {
+  margin-right: 10px;
+}
+
+input {
+  width: 100%
 }

@@ -1,5 +1,5 @@
 import { Component } from 'angular2/core';
-import { RouteConfig, ROUTER_DIRECTIVES } from 'angular2/router';
+import { RouteConfig, ROUTER_DIRECTIVES, Location } from 'angular2/router';
 import { LeftNavComponent } from 'app/left-nav/left-nav.component';
 import { TopNavComponent } from 'app/top-nav/top-nav.component';
 import { LoginComponent } from 'app/login/login.component';
@@ -18,4 +18,10 @@ import { DashboardComponent } from 'app/dashboard/dashboard.component'
   {path:'/data', name: 'Data', component: DataComponent}
 ])
 
-export class AppComponent { }
+export class AppComponent { 
+
+  constructor (private _location: Location) { 
+    this.currentPath = _location.path());
+  } 
+
+}

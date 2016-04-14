@@ -1,6 +1,14 @@
-<div class="loginBox">
-  Username: <input [(ngModel)]="username" />
-  Password: <input [(ngModel)]="password" />
-  <button>Signup</button>
-  <button (click)="login()">Login</button>
+<div class="loginContainer">
+  <div class="loginField">
+    <div class="loginFieldLabel">Username/Email</div> 
+    <div><input [(ngModel)]="username" /></div>
+  </div>
+  <div class="loginField">
+    <div class="loginFieldLabel">Password</div>
+    <div><input [(ngModel)]="password" /></div>
+  </div>
+  <div class="loginButtons">
+    <button class="registerButton">Register</button>
+    <button (click)="login()">Login</button>
+  </div>
 </div>
