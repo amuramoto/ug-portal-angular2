@@ -1,9 +1,22 @@
-.loginContainer {
+.login-container {
+  padding-top: 150px;  
+}
+.login-box {
+  background-color: #FFFFFF;
   border: #73AEC6 1px solid;  
   border-radius: 2px;
-  position: fixed;
-  padding: 25px;
+  padding: 15px 25px 25px 25px ;
   width: 350px;
+  height: auto;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.login-box-logo {
+  margin: 0 auto 10px auto; 
+  height: 150px;
+  width: 150px;
+  background: url(/img/usergrid_blue.png) no-repeat;
 }
 
 a {

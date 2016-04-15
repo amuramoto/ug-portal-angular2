@@ -21,7 +21,13 @@ import { DashboardComponent } from 'app/dashboard/dashboard.component'
 export class AppComponent { 
 
   constructor (private _location: Location) { 
-    this.currentPath = _location.path());
+    this.loginComponentEnabled;
+    let currentPath = _location.path());
+    if (currentPath == '/login') {
+      this.loginComponentEnabled = true;
+    } else {
+      !this.loginComponentEnabled
+    }
   } 
 
 }

@@ -39,8 +39,14 @@ System.register(['angular2/core', 'angular2/router', 'app/left-nav/left-nav.comp
             AppComponent = (function () {
                 function AppComponent(_location) {
                     this._location = _location;
-                    this.currentPath = _location.path();
-                    ;
+                    this.loginComponentEnabled;
+                    var currentPath = _location.path();
+                    if (currentPath == '/login') {
+                        this.loginComponentEnabled = true;
+                    }
+                    else {
+                        !this.loginComponentEnabled;
+                    }
                 }
                 AppComponent = __decorate([
                     core_1.Component({

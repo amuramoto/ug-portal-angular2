@@ -1,8 +1,5 @@
-
-  <ug-top-nav *ngIf="currentPath != '/login'"></ug-top-nav>  
-  <ug-left-nav *ngIf="currentPath != '/login'"></ug-left-nav>
-
-
-<div class="content-container">
+<ug-top-nav></ug-top-nav>  
+<ug-left-nav *ngIf="!loginComponentEnabled"></ug-left-nav>
+<div class="content-container" [ngClass]="{'no-margin': loginComponentEnabled}">
   <router-outlet></router-outlet>
 </div>
