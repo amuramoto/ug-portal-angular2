@@ -16,7 +16,11 @@ export class LoginService {
     };
 
     return this._http.post('/token', credentials)
-      .map(res => res.json().access_token)       
+      .map(res => {
+        this.setToken(res.json().access_token);
+        return res.json().access_token
+        },
+        err => 'sbsegbr')       
   }
 
   logout() {

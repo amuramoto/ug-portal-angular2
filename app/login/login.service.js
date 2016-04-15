@@ -30,13 +30,17 @@ System.register(['angular2/core', 'app/http/ug-http.service'], function(exports_
                     this.access_token;
                 }
                 LoginService.prototype.login = function (username, password) {
+                    var _this = this;
                     var credentials = {
                         "grant_type": "password",
                         "username": username,
                         "password": password
                     };
                     return this._http.post('/token', credentials)
-                        .map(function (res) { return res.json().access_token; });
+                        .map(function (res) {
+                        _this.setToken(res.json().access_token);
+                        return res.json().access_token;
+                    }, function (err) { return 'sbsegbr'; });
                 };
                 LoginService.prototype.logout = function () {
                 };

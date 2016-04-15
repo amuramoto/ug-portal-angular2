@@ -1,4 +1,5 @@
 import { Component } from 'angular2/core';
+import { Router } from 'angular2/router';
 import { LoginService } from 'app/login/login.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { LoginService } from 'app/login/login.service';
 
 export class LoginComponent { 
 
-  constructor (private _loginService: LoginService) {
+  constructor (private _loginService: LoginService, private _router: Router) {
     this.username;
     this.password;
   }
@@ -18,7 +19,7 @@ export class LoginComponent {
   login () {
     this._loginService.login(this.username, this.password)
       .subscribe (
-        res => console.log(res),
+        res => this._router.navigate(['/Dashboard']),
         err => console.log(err)
       )
   }

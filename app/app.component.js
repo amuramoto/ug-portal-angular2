@@ -56,7 +56,7 @@ System.register(['angular2/core', 'angular2/router', 'app/left-nav/left-nav.comp
                         directives: [router_1.ROUTER_DIRECTIVES, left_nav_component_1.LeftNavComponent, top_nav_component_1.TopNavComponent]
                     }),
                     router_1.RouteConfig([
-                        { path: '/', name: 'Test', component: dashboard_component_1.DashboardComponent, useAsDefault: true },
+                        { path: '/', name: 'Dashboard', component: dashboard_component_1.DashboardComponent, useAsDefault: true },
                         { path: '/login', name: 'Login', component: login_component_1.LoginComponent },
                         { path: '/data', name: 'Data', component: data_component_1.DataComponent }
                     ]), 

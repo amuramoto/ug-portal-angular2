@@ -5,6 +5,7 @@ import { TopNavComponent } from 'app/top-nav/top-nav.component';
 import { LoginComponent } from 'app/login/login.component';
 import { DataComponent } from 'app/data/data.component';
 import { DashboardComponent } from 'app/dashboard/dashboard.component'
+import { LoginService } from 'app/login/login.service';
 
 @Component({
   selector: 'ug-portal',
@@ -13,7 +14,7 @@ import { DashboardComponent } from 'app/dashboard/dashboard.component'
   directives: [ROUTER_DIRECTIVES, LeftNavComponent, TopNavComponent]  
 })
 @RouteConfig([
-  {path:'/', name: 'Test', component: DashboardComponent, useAsDefault: true},
+  {path:'/', name: 'Dashboard', component: DashboardComponent, useAsDefault: true},
   {path:'/login', name: 'Login', component: LoginComponent}
   {path:'/data', name: 'Data', component: DataComponent}
 ])
