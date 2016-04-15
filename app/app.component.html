@@ -1,7 +1,8 @@
-<ug-top-nav *ngIf="currentPath != '/login'"></ug-top-nav>  
-<div class="container-fluid">
-  <div class="row">
-    <ug-left-nav *ngIf="currentPath != '/login'"></ug-left-nav>
-    <router-outlet></router-outlet>
-  </div>
+
+  <ug-top-nav *ngIf="currentPath != '/login'"></ug-top-nav>  
+  <ug-left-nav *ngIf="currentPath != '/login'"></ug-left-nav>
+
+
+<div class="content-container">
+  <router-outlet></router-outlet>
 </div>

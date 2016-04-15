@@ -1,10 +1,11 @@
-.left-nav-links {
-  background: #73AEC6;
-  height: 100%;
-  min-width: 200px;
+.left-nav-container {
+  width: 200px;
   position: fixed;
+  height: 100%;
+  background: #73AEC6;
   top: 40px;
 }
+
 
 a {
   display: block;

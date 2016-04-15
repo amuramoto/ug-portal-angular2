@@ -24,8 +24,8 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                 DashboardComponent = __decorate([
                     core_1.Component({
                         selector: 'ug-dashboard',
-                        templateUrl: 'app/left-nav/dashboard.component.html',
-                        styleUrls: ['app/left-nav/dashboard.component.css']
+                        templateUrl: 'app/dashboard/dashboard.component.html',
+                        styleUrls: ['app/dashboard/dashboard.component.css']
                     }), 
                     __metadata('design:paramtypes', [])
                 ], DashboardComponent);

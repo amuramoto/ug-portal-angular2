@@ -3,8 +3,8 @@ import { RouteConfig, RouterLink, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'an
 import { DataComponent } from 'app/data/data.component'
 @Component({
   selector: 'ug-dashboard',
-  templateUrl: 'app/left-nav/dashboard.component.html',
-  styleUrls: [ 'app/left-nav/dashboard.component.css' ]
+  templateUrl: 'app/dashboard/dashboard.component.html',
+  styleUrls: [ 'app/dashboard/dashboard.component.css' ]
 
 })
 
