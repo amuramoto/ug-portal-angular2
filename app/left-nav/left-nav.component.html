@@ -1,5 +1,4 @@
-<div class="leftNavPlaceholder"></div>
-<div class="leftNav-container">
+<div class="left-nav-links">
   <ul>
     <li [ngClass]="{'selected': selectedView == item}" (click)="setSelectedView(item)" *ngFor="#item of menuItems"><a [routerLink]="[ 'Data' ]">{{item}}</a></li>
   </ul>
