@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', 'app/left-nav/left-nav.component', 'app/top-nav/top-nav.component', 'app/login/login.component', 'app/data/data.component', 'app/dashboard/dashboard.component'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', 'app/left-nav/left-nav.component', 'app/top-nav/top-nav.component', 'app/login/login.component', 'app/data/data.component', 'app/dashboard/dashboard.component', 'app/login/login.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/router', 'app/left-nav/left-nav.comp
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, left_nav_component_1, top_nav_component_1, login_component_1, data_component_1, dashboard_component_1;
+    var core_1, router_1, left_nav_component_1, top_nav_component_1, login_component_1, data_component_1, dashboard_component_1, login_service_1;
     var AppComponent;
     return {
         setters:[
@@ -34,35 +34,50 @@ System.register(['angular2/core', 'angular2/router', 'app/left-nav/left-nav.comp
             },
             function (dashboard_component_1_1) {
                 dashboard_component_1 = dashboard_component_1_1;
+            },
+            function (login_service_1_1) {
+                login_service_1 = login_service_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
-                function AppComponent(_location) {
+                function AppComponent(_location, _loginService, _router) {
                     this._location = _location;
-                    this.loginComponentEnabled;
-                    var currentPath = _location.path();
-                    if (currentPath == '/login') {
-                        this.loginComponentEnabled = true;
-                    }
-                    else {
-                        !this.loginComponentEnabled;
-                    }
+                    this._loginService = _loginService;
+                    this._router = _router;
+                    this.authenticated;
                 }
+                AppComponent.prototype.ngOnInit = function () {
+                    var _this = this;
+                    // Always check if user is authenticated
+                    this._router.subscribe(function (next) {
+                        var authStatus = _this.authenticationCheck();
+                        if (!authStatus && !router.isRouteActive(router.generate(['/login']))) {
+                            _this._router.navigate(['Login']);
+                        }
+                    });
+                };
+                AppComponent.prototype.authenticationCheck = function () {
+                    var authStatus = this._loginService.isAuthenticated();
+                    this.authenticated = authStatus;
+                    return authStatus;
+                };
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'ug-portal',
                         templateUrl: 'app/app.component.html',
                         styleUrls: ['app/app.component.css'],
-                        directives: [router_1.ROUTER_DIRECTIVES, left_nav_component_1.LeftNavComponent, top_nav_component_1.TopNavComponent]
+                        directives: [router_1.ROUTER_DIRECTIVES, left_nav_component_1.LeftNavComponent, top_nav_component_1.TopNavComponent],
+                        providers: [login_service_1.LoginService]
                     }),
                     router_1.RouteConfig([
                         { path: '/', name: 'Dashboard', component: dashboard_component_1.DashboardComponent, useAsDefault: true },
                         { path: '/login', name: 'Login', component: login_component_1.LoginComponent },
                         { path: '/data', name: 'Data', component: data_component_1.DataComponent }
                     ]), 
-                    __metadata('design:paramtypes', [router_1.Location])
+                    __metadata('design:paramtypes', [router_1.Location, (typeof (_a = typeof login_service_1.LoginService !== 'undefined' && login_service_1.LoginService) === 'function' && _a) || Object, router_1.Router])
                 ], AppComponent);
                 return AppComponent;
+                var _a;
             }());
             exports_1("AppComponent", AppComponent);
         }

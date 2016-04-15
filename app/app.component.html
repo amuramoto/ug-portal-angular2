@@ -1,5 +1,5 @@
 <ug-top-nav></ug-top-nav>  
-<ug-left-nav *ngIf="!loginComponentEnabled"></ug-left-nav>
+<ug-left-nav *ngIf="authenticated"></ug-left-nav>
 <div class="content-container" [ngClass]="{'no-margin': loginComponentEnabled}">
   <router-outlet></router-outlet>
 </div>

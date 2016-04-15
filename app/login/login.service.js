@@ -51,7 +51,10 @@ System.register(['angular2/core', 'app/http/ug-http.service'], function(exports_
                     this.access_token = token;
                 };
                 LoginService.prototype.isAuthenticated = function (token) {
-                    return this._authenticated;
+                    if (!this.access_token) {
+                        return false;
+                    }
+                    return true;
                 };
                 LoginService = __decorate([
                     core_1.Injectable(),

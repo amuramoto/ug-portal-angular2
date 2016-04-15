@@ -34,7 +34,7 @@ System.register(['angular2/core', 'angular2/router', 'app/login/login.service'],
                 LoginComponent.prototype.login = function () {
                     var _this = this;
                     this._loginService.login(this.username, this.password)
-                        .subscribe(function (res) { return _this._router.navigate(['/Dashboard']); }, function (err) { return console.log(err); });
+                        .subscribe(function (res) { return _this._router.navigate(['Dashboard']); }, function (err) { return console.log(err); });
                 };
                 LoginComponent = __decorate([
                     core_1.Component({

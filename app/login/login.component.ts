@@ -19,7 +19,7 @@ export class LoginComponent {
   login () {
     this._loginService.login(this.username, this.password)
       .subscribe (
-        res => this._router.navigate(['/Dashboard']),
+        res => this._router.navigate(['Dashboard']),
         err => console.log(err)
       )
   }

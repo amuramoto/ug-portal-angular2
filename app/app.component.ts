@@ -1,5 +1,5 @@
 import { Component } from 'angular2/core';
-import { RouteConfig, ROUTER_DIRECTIVES, Location } from 'angular2/router';
+import { Router, RouteConfig, ROUTER_DIRECTIVES, Location } from 'angular2/router';
 import { LeftNavComponent } from 'app/left-nav/left-nav.component';
 import { TopNavComponent } from 'app/top-nav/top-nav.component';
 import { LoginComponent } from 'app/login/login.component';
@@ -11,7 +11,8 @@ import { LoginService } from 'app/login/login.service';
   selector: 'ug-portal',
   templateUrl: 'app/app.component.html',
   styleUrls: ['app/app.component.css'],
-  directives: [ROUTER_DIRECTIVES, LeftNavComponent, TopNavComponent]  
+  directives: [ROUTER_DIRECTIVES, LeftNavComponent, TopNavComponent],  
+  providers: [LoginService]
 })
 @RouteConfig([
   {path:'/', name: 'Dashboard', component: DashboardComponent, useAsDefault: true},
@@ -21,14 +22,26 @@ import { LoginService } from 'app/login/login.service';
 
 export class AppComponent { 
 
-  constructor (private _location: Location) { 
-    this.loginComponentEnabled;
-    let currentPath = _location.path());
-    if (currentPath == '/login') {
-      this.loginComponentEnabled = true;
-    } else {
-      !this.loginComponentEnabled
-    }
+  constructor (private _location: Location, private _loginService: LoginService, private _router: Router) { 
+    this.authenticated;    
   } 
+
+  ngOnInit(){
+    // Always check if user is authenticated
+    this._router.subscribe(
+      next => {
+        let authStatus = this.authenticationCheck();
+        if (!authStatus && !router.isRouteActive(router.generate(['/login']))) {
+          this._router.navigate(['Login']);
+        }
+      }
+    )    
+  }
+
+  authenticationCheck () {
+    let authStatus = this._loginService.isAuthenticated();
+    this.authenticated = authStatus;    
+    return authStatus;
+  }
 
 }

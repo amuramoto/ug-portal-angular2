@@ -4,7 +4,7 @@ import { UGHttpClient } from 'app/http/ug-http.service';
 @Injectable()
 export class LoginService {
   
-  constructor (@Inject(UGHttpClient) private _http: UGHttpClient) {
+  constructor (@Inject(UGHttpClient) private _http: UGHttpClient) {    
     this.access_token;
   }
 
@@ -17,7 +17,7 @@ export class LoginService {
 
     return this._http.post('/token', credentials)
       .map(res => {
-        this.setToken(res.json().access_token);
+        this.setToken(res.json().access_token);        
         return res.json().access_token
         },
         err => 'sbsegbr')       
@@ -36,7 +36,10 @@ export class LoginService {
   }
 
   isAuthenticated (token: string) {
-    return this._authenticated;
+    if (!this.access_token) {
+      return false;
+    }
+    return true;
   }
 
 }
