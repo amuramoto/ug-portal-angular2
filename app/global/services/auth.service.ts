@@ -1,10 +1,10 @@
 import { Injectable, Inject } from 'angular2/core';
-import { UGHttpClient } from 'app/http/ug-http.service';
+import { UGHttpService } from 'app/global/services/ug-http.service';
 
 @Injectable()
-export class LoginService {
+export class AuthService {
   
-  constructor (@Inject(UGHttpClient) private _http: UGHttpClient) {    
+  constructor (@Inject(UGHttpService) private _http: UGHttpService) {    
     this.access_token;
   }
 
@@ -36,7 +36,7 @@ export class LoginService {
   }
 
   isAuthenticated (token: string) {
-    if (!this.access_token) {
+    if (!this.access_token) {    
       return false;
     }
     return true;

@@ -14,7 +14,7 @@ System.register(['angular2/core', 'angular2/http', 'app/ug-settings.service'], f
         return function (target, key) { decorator(target, key, paramIndex); }
     };
     var core_1, http_1, ug_settings_service_1;
-    var UGHttpClient;
+    var UGHttpService;
     return {
         setters:[
             function (core_1_1) {
@@ -27,36 +27,36 @@ System.register(['angular2/core', 'angular2/http', 'app/ug-settings.service'], f
                 ug_settings_service_1 = ug_settings_service_1_1;
             }],
         execute: function() {
-            UGHttpClient = (function () {
-                function UGHttpClient(_http) {
+            UGHttpService = (function () {
+                function UGHttpService(_http) {
                     this._http = _http;
                     var ugSettings = new ug_settings_service_1.UGSettings();
                     this.baseUrl = ugSettings.apiUrl;
                 }
-                UGHttpClient.prototype.get = function (url) {
+                UGHttpService.prototype.get = function (url) {
                     return this._http.get(this.baseUrl + url);
                 };
                 ;
-                UGHttpClient.prototype.post = function (url, body, options) {
+                UGHttpService.prototype.post = function (url, body, options) {
                     return this._http.post(this.baseUrl + url, JSON.stringify(body));
                 };
                 ;
-                UGHttpClient.prototype.put = function (url, body, options) {
+                UGHttpService.prototype.put = function (url, body, options) {
                     return this._http.put(this.baseUrl + url, JSON.stringify(body));
                 };
                 ;
-                UGHttpClient.prototype.delete = function (url) {
+                UGHttpService.prototype.delete = function (url) {
                     return this._http.delete(this.baseUrl + url);
                 };
                 ;
-                UGHttpClient = __decorate([
+                UGHttpService = __decorate([
                     core_1.Injectable(),
                     __param(0, core_1.Inject(http_1.Http)), 
                     __metadata('design:paramtypes', [http_1.Http])
-                ], UGHttpClient);
-                return UGHttpClient;
+                ], UGHttpService);
+                return UGHttpService;
             }());
-            exports_1("UGHttpClient", UGHttpClient);
+            exports_1("UGHttpService", UGHttpService);
         }
     }
 });

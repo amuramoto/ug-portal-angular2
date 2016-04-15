@@ -3,7 +3,7 @@ import { Http, Headers } from 'angular2/http';
 import { UGSettings } from 'app/ug-settings.service';
 
 @Injectable()
-export class UGHttpClient {
+export class UGHttpService {
   constructor(@Inject(Http) private _http: Http) {
     let ugSettings = new UGSettings();
     this.baseUrl = ugSettings.apiUrl;

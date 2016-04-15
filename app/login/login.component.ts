@@ -1,23 +1,23 @@
 import { Component } from 'angular2/core';
 import { Router } from 'angular2/router';
-import { LoginService } from 'app/login/login.service';
+import { AuthService } from 'app/global/services/auth.service';
 
 @Component({
   selector: 'ug-login',
-  providers: [LoginService],
+  providers: [AuthService],
   templateUrl: 'app/login/login.component.html',
   styleUrls: [ 'app/login/login.component.css' ]
 })
 
 export class LoginComponent { 
 
-  constructor (private _loginService: LoginService, private _router: Router) {
+  constructor (private _authService: AuthService, private _router: Router) {
     this.username;
     this.password;
   }
 
   login () {
-    this._loginService.login(this.username, this.password)
+    this._authService.login(this.username, this.password)
       .subscribe (
         res => this._router.navigate(['Dashboard']),
         err => console.log(err)

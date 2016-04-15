@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'app/http/ug-http.service'], function(exports_1, context_1) {
+System.register(['angular2/core', 'app/global/services/ug-http.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -14,7 +14,7 @@ System.register(['angular2/core', 'app/http/ug-http.service'], function(exports_
         return function (target, key) { decorator(target, key, paramIndex); }
     };
     var core_1, ug_http_service_1;
-    var LoginService;
+    var AuthService;
     return {
         setters:[
             function (core_1_1) {
@@ -24,12 +24,12 @@ System.register(['angular2/core', 'app/http/ug-http.service'], function(exports_
                 ug_http_service_1 = ug_http_service_1_1;
             }],
         execute: function() {
-            LoginService = (function () {
-                function LoginService(_http) {
+            AuthService = (function () {
+                function AuthService(_http) {
                     this._http = _http;
                     this.access_token;
                 }
-                LoginService.prototype.login = function (username, password) {
+                AuthService.prototype.login = function (username, password) {
                     var _this = this;
                     var credentials = {
                         "grant_type": "password",
@@ -42,30 +42,30 @@ System.register(['angular2/core', 'app/http/ug-http.service'], function(exports_
                         return res.json().access_token;
                     }, function (err) { return 'sbsegbr'; });
                 };
-                LoginService.prototype.logout = function () {
+                AuthService.prototype.logout = function () {
                 };
-                LoginService.prototype.getToken = function () {
+                AuthService.prototype.getToken = function () {
                     return this.access_token;
                 };
-                LoginService.prototype.setToken = function (token) {
+                AuthService.prototype.setToken = function (token) {
                     this.access_token = token;
                 };
-                LoginService.prototype.isAuthenticated = function (token) {
+                AuthService.prototype.isAuthenticated = function (token) {
                     if (!this.access_token) {
                         return false;
                     }
                     return true;
                 };
-                LoginService = __decorate([
+                AuthService = __decorate([
                     core_1.Injectable(),
-                    __param(0, core_1.Inject(ug_http_service_1.UGHttpClient)), 
-                    __metadata('design:paramtypes', [(typeof (_a = typeof ug_http_service_1.UGHttpClient !== 'undefined' && ug_http_service_1.UGHttpClient) === 'function' && _a) || Object])
-                ], LoginService);
-                return LoginService;
+                    __param(0, core_1.Inject(ug_http_service_1.UGHttpService)), 
+                    __metadata('design:paramtypes', [(typeof (_a = typeof ug_http_service_1.UGHttpService !== 'undefined' && ug_http_service_1.UGHttpService) === 'function' && _a) || Object])
+                ], AuthService);
+                return AuthService;
                 var _a;
             }());
-            exports_1("LoginService", LoginService);
+            exports_1("AuthService", AuthService);
         }
     }
 });
-//# sourceMappingURL=login.service.js.map
+//# sourceMappingURL=auth.service.js.map
