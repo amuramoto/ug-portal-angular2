@@ -6,7 +6,7 @@ import { UGSettings } from 'app/global/services/ug-settings.service';
 export class AuthService {
   
   constructor (private _http: UGHttpService, private _ugSettings: UGSettings) {    
-    this.access_token;
+    this.access_token = localStorage.getItem('token');
     this.maxTokenAge = _ugSettings.getUGSettings().maxTokenAge;
   }
 
@@ -46,7 +46,7 @@ export class AuthService {
   isAuthenticated (token: string) {
     
     let lastLoginTime = localStorage.getItem('lastLogin');
-
+    
     if (!this.access_token) {    
       return false;
     }

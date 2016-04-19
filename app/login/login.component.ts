@@ -16,6 +16,12 @@ export class LoginComponent {
     this.error;
   }
 
+  ngOnInit () {
+    if (this._authService.isAuthenticated()) {
+      this._router.navigate(['Dashboard']);
+    }
+  }
+
   login () {
     if (!this.username || !this.password) {
       this.error = 'Username and Password Required';

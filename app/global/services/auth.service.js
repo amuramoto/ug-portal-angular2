@@ -28,7 +28,7 @@ System.register(['angular2/core', 'app/global/services/ug-http.service', 'app/gl
                 function AuthService(_http, _ugSettings) {
                     this._http = _http;
                     this._ugSettings = _ugSettings;
-                    this.access_token;
+                    this.access_token = localStorage.getItem('token');
                     this.maxTokenAge = _ugSettings.getUGSettings().maxTokenAge;
                 }
                 AuthService.prototype.login = function (username, password) {

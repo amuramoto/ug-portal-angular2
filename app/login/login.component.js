@@ -32,6 +32,11 @@ System.register(['angular2/core', 'angular2/router', 'app/global/services/auth.s
                     this.password;
                     this.error;
                 }
+                LoginComponent.prototype.ngOnInit = function () {
+                    if (this._authService.isAuthenticated()) {
+                        this._router.navigate(['Dashboard']);
+                    }
+                };
                 LoginComponent.prototype.login = function () {
                     var _this = this;
                     if (!this.username || !this.password) {
