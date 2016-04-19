@@ -32,8 +32,7 @@ export class LeftNavComponent {
 
 
 
-    public setSelectedView (selectedView: string) {
-        this.selectedView = selectedView;
-        console.log(this.selectedView);
+    public setSelectedComponent (selectedComponent: string) {
+        this.selectedComponent = selectedComponent;        
     }
 }

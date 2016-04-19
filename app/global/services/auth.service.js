@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'app/global/services/ug-http.service'], function(exports_1, context_1) {
+System.register(['angular2/core', 'app/global/services/ug-http.service', 'app/global/services/ug-settings.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,10 +10,7 @@ System.register(['angular2/core', 'app/global/services/ug-http.service'], functi
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var __param = (this && this.__param) || function (paramIndex, decorator) {
-        return function (target, key) { decorator(target, key, paramIndex); }
-    };
-    var core_1, ug_http_service_1;
+    var core_1, ug_http_service_1, ug_settings_service_1;
     var AuthService;
     return {
         setters:[
@@ -22,12 +19,17 @@ System.register(['angular2/core', 'app/global/services/ug-http.service'], functi
             },
             function (ug_http_service_1_1) {
                 ug_http_service_1 = ug_http_service_1_1;
+            },
+            function (ug_settings_service_1_1) {
+                ug_settings_service_1 = ug_settings_service_1_1;
             }],
         execute: function() {
             AuthService = (function () {
-                function AuthService(_http) {
+                function AuthService(_http, _UGSettings) {
                     this._http = _http;
+                    this._UGSettings = _UGSettings;
                     this.access_token;
+                    this.maxTokenAge = ug_settings_service_1.UGSettings.getUGSettings().maxTokenAge;
                 }
                 AuthService.prototype.login = function (username, password) {
                     var _this = this;
@@ -40,29 +42,40 @@ System.register(['angular2/core', 'app/global/services/ug-http.service'], functi
                         .map(function (res) {
                         _this.setToken(res.json().access_token);
                         return res.json().access_token;
-                    }, function (err) { return 'sbsegbr'; });
+                    }, function (err) { return 'Invalid username or password'; });
                 };
                 AuthService.prototype.logout = function () {
+                    localStorage.removeItem('token');
+                    delete this.access_token;
                 };
                 AuthService.prototype.getToken = function () {
                     return this.access_token;
                 };
                 AuthService.prototype.setToken = function (token) {
+                    localStorage.setItem('token', token);
+                    localStorage.setItem('lastLogin', now());
                     this.access_token = token;
                 };
                 AuthService.prototype.isAuthenticated = function (token) {
+                    var lastLoginTime = localStoage.getItem('lastLogin');
                     if (!this.access_token) {
+                        return false;
+                    }
+                    if (lastLoginTime && getTokenAge() < 2) {
                         return false;
                     }
                     return true;
                 };
+                AuthService.prototype.getTokenAge = function (timestamp) {
+                    var loginAge = localStoage.getItem('lastLogin') - now();
+                    return loginAge - now();
+                };
                 AuthService = __decorate([
-                    core_1.Injectable(),
-                    __param(0, core_1.Inject(ug_http_service_1.UGHttpService)), 
-                    __metadata('design:paramtypes', [(typeof (_a = typeof ug_http_service_1.UGHttpService !== 'undefined' && ug_http_service_1.UGHttpService) === 'function' && _a) || Object])
+                    core_1.Injectable(), 
+                    __metadata('design:paramtypes', [(typeof (_a = typeof ug_http_service_1.UGHttpService !== 'undefined' && ug_http_service_1.UGHttpService) === 'function' && _a) || Object, (typeof (_b = typeof ug_settings_service_1.UGSettings !== 'undefined' && ug_settings_service_1.UGSettings) === 'function' && _b) || Object])
                 ], AuthService);
                 return AuthService;
-                var _a;
+                var _a, _b;
             }());
             exports_1("AuthService", AuthService);
         }

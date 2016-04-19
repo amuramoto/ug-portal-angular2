@@ -7,7 +7,4 @@ import { DataComponent } from 'app/data/data.component'
 
 })
 
-export class DashboardComponent { 
-
-
-}
+export class DashboardComponent { }

@@ -4,7 +4,6 @@ import { AuthService } from 'app/global/services/auth.service';
 
 @Component({
   selector: 'ug-login',
-  providers: [AuthService],
   templateUrl: 'app/login/login.component.html',
   styleUrls: [ 'app/login/login.component.css' ]
 })

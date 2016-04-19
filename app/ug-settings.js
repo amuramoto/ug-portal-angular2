@@ -7,10 +7,12 @@ System.register([], function(exports_1, context_1) {
         execute: function() {
             UGSettings = (function () {
                 function UGSettings() {
-                    var org = 'amuramoto';
-                    var app = 'sandbox';
-                    var baseurl = 'http://api.usergrid.com';
-                    this.apiUrl = baseurl + "/" + org + "/" + app;
+                    this.org = 'amuramoto';
+                    this.app = 'sandbox';
+                    this.baseUrl = 'http://api.usergrid.com';
+                    this.apiUrl = this.baseUrl + "/" + this.org + "/" + this.app;
+                    //default max token age - 3 days
+                    this.maxTokenAge = 259200;
                 }
                 return UGSettings;
             }());
@@ -18,4 +20,4 @@ System.register([], function(exports_1, context_1) {
         }
     }
 });
-//# sourceMappingURL=ug-settings.service.js.map
+//# sourceMappingURL=ug-settings.js.map

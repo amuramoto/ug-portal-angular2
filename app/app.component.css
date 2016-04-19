@@ -4,6 +4,11 @@
   height: 100%;
 }
 
+.no-left-nav {
+  margin: 0px;
+  padding: 0px;
+}
+
 .content-container.no-margin {
   padding: 0px;
   margin: 0px;

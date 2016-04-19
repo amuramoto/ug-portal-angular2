@@ -11,11 +11,10 @@ import { AuthService } from 'app/global/services/auth.service';
   selector: 'ug-portal',
   templateUrl: 'app/app.component.html',
   styleUrls: ['app/app.component.css'],
-  directives: [ROUTER_DIRECTIVES, LeftNavComponent, TopNavComponent],  
-  providers: [AuthService]
+  directives: [ROUTER_DIRECTIVES, LeftNavComponent, TopNavComponent]
 })
 @RouteConfig([
-  {path:'/', name: 'Dashboard', component: DashboardComponent, useAsDefault: true},
+  {path:'/dashboard', name: 'Dashboard', component: DashboardComponent, useAsDefault: true},
   {path:'/login', name: 'Login', component: LoginComponent}
   {path:'/data', name: 'Data', component: DataComponent}
 ])

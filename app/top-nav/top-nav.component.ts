@@ -6,8 +6,4 @@ import {Component} from 'angular2/core';
   styleUrls: ['app/top-nav/top-nav.component.css']
 })
 
-export class TopNavComponent {
-
-    
-
-}
+export class TopNavComponent {}

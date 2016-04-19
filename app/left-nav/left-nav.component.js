@@ -37,9 +37,8 @@ System.register(['angular2/core', 'angular2/router'], function(exports_1, contex
                         'Activities'
                     ];
                 }
-                LeftNavComponent.prototype.setSelectedView = function (selectedView) {
-                    this.selectedView = selectedView;
-                    console.log(this.selectedView);
+                LeftNavComponent.prototype.setSelectedComponent = function (selectedComponent) {
+                    this.selectedComponent = selectedComponent;
                 };
                 LeftNavComponent = __decorate([
                     core_1.Component({

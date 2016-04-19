@@ -1,5 +1,5 @@
 <div class="left-nav-container">
   <ul class="left-nav-links">
-    <li [ngClass]="{'selected': selectedView == item}" (click)="setSelectedView(item)" *ngFor="#item of menuItems"><a [routerLink]="[ 'Data' ]">{{item}}</a></li>
+    <li [ngClass]="{'selected': selectedComponent == menuItem}" (click)="setSelectedComponent(item)" *ngFor="#menuItem of menuItems"><a [routerLink]="[ 'Data' ]">{{menuItem}}</a></li>
   </ul>
 </div>

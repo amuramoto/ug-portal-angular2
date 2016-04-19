@@ -66,11 +66,10 @@ System.register(['angular2/core', 'angular2/router', 'app/left-nav/left-nav.comp
                         selector: 'ug-portal',
                         templateUrl: 'app/app.component.html',
                         styleUrls: ['app/app.component.css'],
-                        directives: [router_1.ROUTER_DIRECTIVES, left_nav_component_1.LeftNavComponent, top_nav_component_1.TopNavComponent],
-                        providers: [auth_service_1.AuthService]
+                        directives: [router_1.ROUTER_DIRECTIVES, left_nav_component_1.LeftNavComponent, top_nav_component_1.TopNavComponent]
                     }),
                     router_1.RouteConfig([
-                        { path: '/', name: 'Dashboard', component: dashboard_component_1.DashboardComponent, useAsDefault: true },
+                        { path: '/dashboard', name: 'Dashboard', component: dashboard_component_1.DashboardComponent, useAsDefault: true },
                         { path: '/login', name: 'Login', component: login_component_1.LoginComponent },
                         { path: '/data', name: 'Data', component: data_component_1.DataComponent }
                     ]), 

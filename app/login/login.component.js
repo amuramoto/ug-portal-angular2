@@ -39,7 +39,6 @@ System.register(['angular2/core', 'angular2/router', 'app/global/services/auth.s
                 LoginComponent = __decorate([
                     core_1.Component({
                         selector: 'ug-login',
-                        providers: [auth_service_1.AuthService],
                         templateUrl: 'app/login/login.component.html',
                         styleUrls: ['app/login/login.component.css']
                     }), 
