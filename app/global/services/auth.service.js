@@ -25,11 +25,11 @@ System.register(['angular2/core', 'app/global/services/ug-http.service', 'app/gl
             }],
         execute: function() {
             AuthService = (function () {
-                function AuthService(_http, _UGSettings) {
+                function AuthService(_http, _ugSettings) {
                     this._http = _http;
-                    this._UGSettings = _UGSettings;
+                    this._ugSettings = _ugSettings;
                     this.access_token;
-                    this.maxTokenAge = ug_settings_service_1.UGSettings.getUGSettings().maxTokenAge;
+                    this.maxTokenAge = _ugSettings.getUGSettings().maxTokenAge;
                 }
                 AuthService.prototype.login = function (username, password) {
                     var _this = this;
@@ -53,22 +53,24 @@ System.register(['angular2/core', 'app/global/services/ug-http.service', 'app/gl
                 };
                 AuthService.prototype.setToken = function (token) {
                     localStorage.setItem('token', token);
-                    localStorage.setItem('lastLogin', now());
+                    localStorage.setItem('lastLogin', Date.now());
                     this.access_token = token;
                 };
                 AuthService.prototype.isAuthenticated = function (token) {
-                    var lastLoginTime = localStoage.getItem('lastLogin');
+                    var lastLoginTime = localStorage.getItem('lastLogin');
                     if (!this.access_token) {
                         return false;
                     }
-                    if (lastLoginTime && getTokenAge() < 2) {
+                    if (lastLoginTime && this.getTokenAge() > this.maxTokenAge) {
+                        console.log('ok');
                         return false;
                     }
                     return true;
                 };
                 AuthService.prototype.getTokenAge = function (timestamp) {
-                    var loginAge = localStoage.getItem('lastLogin') - now();
-                    return loginAge - now();
+                    var loginAge = Date.now() - localStorage.getItem('lastLogin');
+                    //return age in seconds
+                    return loginAge / 1000;
                 };
                 AuthService = __decorate([
                     core_1.Injectable(), 

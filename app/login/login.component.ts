@@ -13,14 +13,29 @@ export class LoginComponent {
   constructor (private _authService: AuthService, private _router: Router) {
     this.username;
     this.password;
+    this.error;
   }
 
   login () {
-    this._authService.login(this.username, this.password)
-      .subscribe (
-        res => this._router.navigate(['Dashboard']),
-        err => console.log(err)
-      )
+    if (!this.username || !this.password) {
+      this.error = 'Username and Password Required';
+    } else {
+      !this.error;
+      this._authService.login(this.username, this.password)
+        .subscribe (
+          res => this._router.navigate(['Dashboard']),
+          err => {
+            this.error = 'Invalid Username or Password'
+            console.log(err)
+          }
+        )
+    }
+  }
+
+  onKey(event){
+    if (event.keyCode == 13) {
+      this.login();      
+    }
   }
 
 }

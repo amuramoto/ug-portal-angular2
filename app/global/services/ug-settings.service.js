@@ -29,7 +29,7 @@ System.register(['angular2/core', 'app/ug-settings'], function(exports_1, contex
                     return this.UGSettings;
                 };
                 UGSettings = __decorate([
-                    core_1.Injectable, 
+                    core_1.Injectable(), 
                     __metadata('design:paramtypes', [])
                 ], UGSettings);
                 return UGSettings;

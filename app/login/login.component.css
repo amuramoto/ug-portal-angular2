@@ -20,6 +20,18 @@
   background: url(/img/usergrid_blue.png) no-repeat;
 }
 
+.login-error {
+  text-align: center;
+  font-weight: 400;
+  font-size: 14px;
+  background: #FFE4E4;
+  border: #FF7E7E 1px solid;
+  padding: 2px;
+  border-radius: 2px;
+  width: 85%;
+  margin: 0 auto 25px auto;
+}
+
 a {
   display: block;
   color: #FFFFFF;

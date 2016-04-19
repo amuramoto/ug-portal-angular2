@@ -1,9 +1,10 @@
-<div class="login-container">
+<div class="login-container">  
   <div class="login-box">
     <div class="login-box-logo"></div>
+    <div class="login-error" *ngIf="error">{{ error }}</div>
     <div class="loginField">
       <div class="loginFieldLabel">Username/Email</div> 
-      <div><input [(ngModel)]="username" /></div>
+      <div><input [(ngModel)]="username" (keyup)="onKey($event)"/></div>
     </div>
     <div class="loginField">
       <div class="loginFieldLabel">Password</div>

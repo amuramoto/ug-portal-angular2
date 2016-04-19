@@ -30,11 +30,26 @@ System.register(['angular2/core', 'angular2/router', 'app/global/services/auth.s
                     this._router = _router;
                     this.username;
                     this.password;
+                    this.error;
                 }
                 LoginComponent.prototype.login = function () {
                     var _this = this;
-                    this._authService.login(this.username, this.password)
-                        .subscribe(function (res) { return _this._router.navigate(['Dashboard']); }, function (err) { return console.log(err); });
+                    if (!this.username || !this.password) {
+                        this.error = 'Username and Password Required';
+                    }
+                    else {
+                        !this.error;
+                        this._authService.login(this.username, this.password)
+                            .subscribe(function (res) { return _this._router.navigate(['Dashboard']); }, function (err) {
+                            _this.error = 'Invalid Username or Password';
+                            console.log(err);
+                        });
+                    }
+                };
+                LoginComponent.prototype.onKey = function (event) {
+                    if (event.keyCode == 13) {
+                        this.login();
+                    }
                 };
                 LoginComponent = __decorate([
                     core_1.Component({

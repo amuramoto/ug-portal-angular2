@@ -5,9 +5,9 @@ import { UGSettings } from 'app/global/services/ug-settings.service';
 @Injectable()
 export class AuthService {
   
-  constructor (private _http: UGHttpService, private _UGSettings: UGSettings) {    
+  constructor (private _http: UGHttpService, private _ugSettings: UGSettings) {    
     this.access_token;
-    this.maxTokenAge = UGSettings.getUGSettings().maxTokenAge;
+    this.maxTokenAge = _ugSettings.getUGSettings().maxTokenAge;
   }
 
   login(username, password) {
@@ -38,19 +38,20 @@ export class AuthService {
 
   private setToken (token: string) {
     localStorage.setItem('token', token);
-    localStorage.setItem('lastLogin', now());
+    localStorage.setItem('lastLogin', Date.now());
     this.access_token = token;
   }
 
   isAuthenticated (token: string) {
     
-    let lastLoginTime = localStoage.getItem('lastLogin');
+    let lastLoginTime = localStorage.getItem('lastLogin');
 
     if (!this.access_token) {    
       return false;
     }
 
-    if (lastLoginTime && getTokenAge()<2) {
+    if (lastLoginTime && this.getTokenAge() > this.maxTokenAge) {
+    console.log('ok')
       return false;
     }
     
@@ -58,8 +59,9 @@ export class AuthService {
   }
 
   getTokenAge (timestamp) {
-    let loginAge = localStoage.getItem('lastLogin') - now();
-    return loginAge - now();
+    let loginAge = Date.now() - localStorage.getItem('lastLogin');
+    //return age in seconds
+    return loginAge/1000;
   }
 
 }
