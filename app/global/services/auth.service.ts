@@ -29,6 +29,7 @@ export class AuthService {
 
   logout() {
     localStorage.removeItem('token');
+    localStorage.removeItem('lastLogin');
     delete this.access_token;
   }
 
@@ -51,7 +52,7 @@ export class AuthService {
     }
 
     if (lastLoginTime && this.getTokenAge() > this.maxTokenAge) {
-    console.log('ok')
+      this.logout();
       return false;
     }
     

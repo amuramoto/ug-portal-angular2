@@ -46,6 +46,7 @@ System.register(['angular2/core', 'app/global/services/ug-http.service', 'app/gl
                 };
                 AuthService.prototype.logout = function () {
                     localStorage.removeItem('token');
+                    localStorage.removeItem('lastLogin');
                     delete this.access_token;
                 };
                 AuthService.prototype.getToken = function () {
@@ -62,7 +63,7 @@ System.register(['angular2/core', 'app/global/services/ug-http.service', 'app/gl
                         return false;
                     }
                     if (lastLoginTime && this.getTokenAge() > this.maxTokenAge) {
-                        console.log('ok');
+                        this.logout();
                         return false;
                     }
                     return true;
