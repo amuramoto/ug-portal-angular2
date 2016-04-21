@@ -1,6 +1,7 @@
 import { Injectable, Inject } from 'angular2/core';
 import { Http, Headers } from 'angular2/http';
 import { UGSettings } from 'app/global/services/ug-settings.service';
+import { Observable } from 'node_modules/rxjs/Observable'
 
 @Injectable()
 export class UGHttpService {
