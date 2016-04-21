@@ -34,6 +34,9 @@ export class AuthService {
   }
 
   getToken() {
+    if (!this.isAuthenticated) {
+      return false;
+    } 
     return this.access_token;
   }
 

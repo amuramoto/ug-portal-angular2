@@ -50,6 +50,9 @@ System.register(['angular2/core', 'app/global/services/ug-http.service', 'app/gl
                     delete this.access_token;
                 };
                 AuthService.prototype.getToken = function () {
+                    if (!this.isAuthenticated) {
+                        return false;
+                    }
                     return this.access_token;
                 };
                 AuthService.prototype.setToken = function (token) {
