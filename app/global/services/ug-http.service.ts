@@ -10,18 +10,22 @@ export class UGHttpService {
   }
 
   get(url: string) {
-    return this._http.get(this.baseUrl + url);
+    let observable: Observable = this._http.get(this.baseUrl + url);
+    return observable;
   };
 
-  post(url: string, body: object, options: object) {  
-    return this._http.post(this.baseUrl + url, JSON.stringify(body));
+  post(url: string, body: Object, options: Object) {  
+    let observable: Observable = this._http.post(this.baseUrl + url, JSON.stringify(body));
+    return observable;
   };
 
-  put(url: string, body: object, options: object) {
-    return this._http.put(this.baseUrl + url, JSON.stringify(body));
+  put(url: string, body: Object, options: Object) {
+    let observable: Observable = this._http.put(this.baseUrl + url, JSON.stringify(body))
+    return observable;
   };
 
   delete(url: string) {
-    return this._http.delete(this.baseUrl + url);
+    let observable: Observable = this._http.delete(this.baseUrl + url);
+    return observable;
   };
 }
