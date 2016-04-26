@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'app/global/services/ug-http.service', 'app/global/services/ug-settings.service'], function(exports_1, context_1) {
+System.register(['angular2/core', './ug-http.service', './ug-settings.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -57,10 +57,10 @@ System.register(['angular2/core', 'app/global/services/ug-http.service', 'app/gl
                 };
                 AuthService.prototype.setToken = function (token) {
                     localStorage.setItem('token', token);
-                    localStorage.setItem('lastLogin', Date.now());
+                    localStorage.setItem('lastLogin', Date.now().toString());
                     this.access_token = token;
                 };
-                AuthService.prototype.isAuthenticated = function (token) {
+                AuthService.prototype.isAuthenticated = function () {
                     var lastLoginTime = localStorage.getItem('lastLogin');
                     if (!this.access_token) {
                         return false;
@@ -71,17 +71,15 @@ System.register(['angular2/core', 'app/global/services/ug-http.service', 'app/gl
                     }
                     return true;
                 };
-                AuthService.prototype.getTokenAge = function (timestamp) {
+                AuthService.prototype.getTokenAge = function () {
                     var loginAge = Date.now() - localStorage.getItem('lastLogin');
-                    //return age in seconds
                     return loginAge / 1000;
                 };
                 AuthService = __decorate([
                     core_1.Injectable(), 
-                    __metadata('design:paramtypes', [(typeof (_a = typeof ug_http_service_1.UGHttpService !== 'undefined' && ug_http_service_1.UGHttpService) === 'function' && _a) || Object, (typeof (_b = typeof ug_settings_service_1.UGSettings !== 'undefined' && ug_settings_service_1.UGSettings) === 'function' && _b) || Object])
+                    __metadata('design:paramtypes', [ug_http_service_1.UGHttpService, ug_settings_service_1.UGSettings])
                 ], AuthService);
                 return AuthService;
-                var _a, _b;
             }());
             exports_1("AuthService", AuthService);
         }

@@ -1,6 +1,6 @@
 import { Component } from 'angular2/core';
 import { Router } from 'angular2/router';
-import { AuthService } from 'app/global/services/auth.service';
+import { AuthService } from '../global/services/auth.service';
 
 @Component({
   selector: 'ug-login',
@@ -10,10 +10,12 @@ import { AuthService } from 'app/global/services/auth.service';
 
 export class LoginComponent { 
 
+  username: string;
+  password: string;
+  error: string;
+
   constructor (private _authService: AuthService, private _router: Router) {
-    this.username;
-    this.password;
-    this.error;
+    
   }
 
   ngOnInit () {

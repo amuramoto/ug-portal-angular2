@@ -8,8 +8,7 @@
     "experimentalDecorators": true,
     "removeComments": true,
     "noImplicitAny": false,
-    "declaration": true,
-    "outDir": "/dist" 
+    "declaration": true
   },
   "exclude": [
     "node_modules",

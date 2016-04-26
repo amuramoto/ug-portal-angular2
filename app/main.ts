@@ -1,11 +1,11 @@
 import { AppComponent } from './app.component';
 import { provide } from 'angular2/core';
-import { UGSettings } from 'app/global/services/ug-settings.service';
-import { UGHttpService } from 'app/global/services/ug-http.service';
+import { UGSettings } from './global/services/ug-settings.service';
+import { UGHttpService } from './global/services/ug-http.service';
 import { Http, Headers, HTTP_BINDINGS } from 'angular2/http';
 import { bootstrap }    from 'angular2/platform/browser';
 import { ROUTER_PROVIDERS, LocationStrategy, PathLocationStrategy } from 'angular2/router';
-import { AuthService } from 'app/global/services/auth.service';
+import { AuthService } from './global/services/auth.service';
 import 'rxjs/Rx';
 
 bootstrap(AppComponent, 

@@ -1,4 +1,9 @@
 export class UGSettings {
+  org: string;
+  app: string;
+  baseUrl: string;
+  apiUrl: string;
+  maxTokenAge: number;
   constructor () {
     this.org = 'amuramoto';
     this.app = 'sandbox';

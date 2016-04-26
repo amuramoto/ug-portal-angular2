@@ -1,11 +1,11 @@
 import { Component } from 'angular2/core';
-import { Router, RouteConfig, ROUTER_DIRECTIVES, Location } from 'angular2/router';
-import { LeftNavComponent } from 'app/left-nav/left-nav.component';
-import { TopNavComponent } from 'app/top-nav/top-nav.component';
-import { DataComponent } from 'app/data/data.component';
-import { DashboardComponent } from 'app/dashboard/dashboard.component'
-import { LoginComponent } from 'app/login/login.component'
-import { AuthService } from 'app/global/services/auth.service';
+import { Router, RouteConfig, ROUTER_DIRECTIVES } from 'angular2/router';
+import { LeftNavComponent } from './left-nav/left-nav.component';
+import { TopNavComponent } from './top-nav/top-nav.component';
+import { DataComponent } from './data/data.component';
+import { DashboardComponent } from './dashboard/dashboard.component'
+import { LoginComponent } from './login/login.component'
+import { AuthService } from './global/services/auth.service';
 
 @Component({
   selector: 'ug-portal',
@@ -15,13 +15,13 @@ import { AuthService } from 'app/global/services/auth.service';
 })
 @RouteConfig([
   {path:'/dashboard', name: 'Dashboard', component: DashboardComponent, useAsDefault: true},
-  {path:'/login', name: 'Login', component: LoginComponent}
+  {path:'/login', name: 'Login', component: LoginComponent},
   {path:'/data', name: 'Data', component: DataComponent}
 ])
 
 export class AppComponent { 
-
-  constructor (private _location: Location, private _authService: AuthService, private _router: Router) { 
+  authenticated:boolean;
+  constructor (private _authService: AuthService, private _router: Router) { 
     this.authenticated;    
   } 
 

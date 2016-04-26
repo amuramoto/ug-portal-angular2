@@ -1,7 +1,6 @@
 import { Component } from 'angular2/core';
 import { Router, ROUTER_DIRECTIVES } from 'angular2/router';
-import { DataComponent } from 'app/data/data.component'
-import { AppComponent } from 'app/app.component'
+import { DataComponent } from '../data/data.component'
 
 @Component({
   selector: 'ug-left-nav',
@@ -12,6 +11,9 @@ import { AppComponent } from 'app/app.component'
 })
 
 export class LeftNavComponent { 
+
+    menuItems: Array<string>;
+    selectedComponent: string;
 
     constructor(private _router: Router) {
       _router.subscribe((url) => {          

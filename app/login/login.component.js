@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', 'app/global/services/auth.service'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', '../global/services/auth.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -28,9 +28,6 @@ System.register(['angular2/core', 'angular2/router', 'app/global/services/auth.s
                 function LoginComponent(_authService, _router) {
                     this._authService = _authService;
                     this._router = _router;
-                    this.username;
-                    this.password;
-                    this.error;
                 }
                 LoginComponent.prototype.ngOnInit = function () {
                     if (this._authService.isAuthenticated()) {
@@ -62,10 +59,9 @@ System.register(['angular2/core', 'angular2/router', 'app/global/services/auth.s
                         templateUrl: 'app/login/login.component.html',
                         styleUrls: ['app/login/login.component.css']
                     }), 
-                    __metadata('design:paramtypes', [(typeof (_a = typeof auth_service_1.AuthService !== 'undefined' && auth_service_1.AuthService) === 'function' && _a) || Object, router_1.Router])
+                    __metadata('design:paramtypes', [auth_service_1.AuthService, router_1.Router])
                 ], LoginComponent);
                 return LoginComponent;
-                var _a;
             }());
             exports_1("LoginComponent", LoginComponent);
         }

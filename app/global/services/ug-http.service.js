@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/http', 'app/global/services/ug-settings.service'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/http', './ug-settings.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -31,27 +31,30 @@ System.register(['angular2/core', 'angular2/http', 'app/global/services/ug-setti
                     this.baseUrl = _ugSettings.getUGSettings().apiUrl;
                 }
                 UGHttpService.prototype.get = function (url) {
-                    return this._http.get(this.baseUrl + url);
+                    var observable = this._http.get(this.baseUrl + url);
+                    return observable;
                 };
                 ;
-                UGHttpService.prototype.post = function (url, body, options) {
-                    return this._http.post(this.baseUrl + url, JSON.stringify(body));
+                UGHttpService.prototype.post = function (url, body) {
+                    var observable = this._http.post(this.baseUrl + url, JSON.stringify(body));
+                    return observable;
                 };
                 ;
-                UGHttpService.prototype.put = function (url, body, options) {
-                    return this._http.put(this.baseUrl + url, JSON.stringify(body));
+                UGHttpService.prototype.put = function (url, body) {
+                    var observable = this._http.put(this.baseUrl + url, JSON.stringify(body));
+                    return observable;
                 };
                 ;
                 UGHttpService.prototype.delete = function (url) {
-                    return this._http.delete(this.baseUrl + url);
+                    var observable = this._http.delete(this.baseUrl + url);
+                    return observable;
                 };
                 ;
                 UGHttpService = __decorate([
                     core_1.Injectable(), 
-                    __metadata('design:paramtypes', [http_1.Http, (typeof (_a = typeof ug_settings_service_1.UGSettings !== 'undefined' && ug_settings_service_1.UGSettings) === 'function' && _a) || Object])
+                    __metadata('design:paramtypes', [http_1.Http, ug_settings_service_1.UGSettings])
                 ], UGHttpService);
                 return UGHttpService;
-                var _a;
             }());
             exports_1("UGHttpService", UGHttpService);
         }

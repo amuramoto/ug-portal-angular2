@@ -1,8 +1,11 @@
 import { Router } from 'angular2/router';
-import { AuthService } from 'app/global/services/auth.service';
+import { AuthService } from '../global/services/auth.service';
 export declare class LoginComponent {
     private _authService;
     private _router;
+    username: string;
+    password: string;
+    error: string;
     constructor(_authService: AuthService, _router: Router);
     ngOnInit(): void;
     login(): void;

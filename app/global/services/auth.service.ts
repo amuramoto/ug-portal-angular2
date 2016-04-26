@@ -1,10 +1,13 @@
 import { Injectable, Inject } from 'angular2/core';
-import { UGHttpService } from 'app/global/services/ug-http.service';
-import { UGSettings } from 'app/global/services/ug-settings.service';
+import { UGHttpService } from './ug-http.service';
+import { UGSettings } from './ug-settings.service';
 
 @Injectable()
 export class AuthService {
   
+  access_token: string;
+  maxTokenAge: number;
+
   constructor (private _http: UGHttpService, private _ugSettings: UGSettings) {    
     this.access_token = localStorage.getItem('token');
     this.maxTokenAge = _ugSettings.getUGSettings().maxTokenAge;
@@ -20,7 +23,7 @@ export class AuthService {
     return this._http.post('/token', credentials)
       .map(
         res => {
-          this.setToken(res.json().access_token);                  
+          this.setToken(res.json().access_token);
           return res.json().access_token;
         },
         err => 'Invalid username or password'
@@ -42,11 +45,11 @@ export class AuthService {
 
   private setToken (token: string) {
     localStorage.setItem('token', token);
-    localStorage.setItem('lastLogin', Date.now());
+    localStorage.setItem('lastLogin', Date.now().toString());
     this.access_token = token;
   }
 
-  isAuthenticated (token: string) {
+  isAuthenticated () {
     
     let lastLoginTime = localStorage.getItem('lastLogin');
     
@@ -62,7 +65,7 @@ export class AuthService {
     return true;
   }
 
-  getTokenAge (timestamp) {
+  getTokenAge () {
     let loginAge = Date.now() - localStorage.getItem('lastLogin');
     //return age in seconds
     return loginAge/1000;
