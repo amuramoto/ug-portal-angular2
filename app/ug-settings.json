@@ -1,0 +1,6 @@
+{
+  "org": "amuramoto";
+  "app": "sandbox";
+  "baseUrl": "http://api.usergrid.com";
+  "maxTokenAge": 259200;  
+}

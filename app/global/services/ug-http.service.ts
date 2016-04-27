@@ -1,15 +1,15 @@
 import { Injectable, Inject } from 'angular2/core';
-import { Http, Headers } from 'angular2/http';
+import { Http, Headers, Response } from 'angular2/http';
+import { Observable } from 'rxjs/Observable';
 import { UGSettings } from './ug-settings.service';
-import { Observable } from 'rxjs/Observable'
 
 @Injectable()
 export class UGHttpService {
 
   baseUrl: string;
 
-  constructor(private _http: Http, private _ugSettings: UGSettings) {
-    this.baseUrl = _ugSettings.getUGSettings().apiUrl;
+  constructor(private _ugSettings: UGSettings, private _http: Http) {
+    this.baseUrl = _ugSettings.getBaseUrl();
   }
 
   get(url: string) {

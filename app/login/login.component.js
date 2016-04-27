@@ -41,6 +41,7 @@ System.register(['angular2/core', 'angular2/router', '../global/services/auth.se
                     }
                     else {
                         !this.error;
+                        console.log(this._authService.login);
                         this._authService.login(this.username, this.password)
                             .subscribe(function (res) { return _this._router.navigate(['Dashboard']); }, function (err) {
                             _this.error = 'Invalid Username or Password';

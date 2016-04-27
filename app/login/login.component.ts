@@ -25,10 +25,12 @@ export class LoginComponent {
   }
 
   login () {
+
     if (!this.username || !this.password) {
       this.error = 'Username and Password Required';
     } else {
       !this.error;
+      console.log(this._authService.login)
       this._authService.login(this.username, this.password)
         .subscribe (
           res => this._router.navigate(['Dashboard']),

@@ -25,10 +25,10 @@ System.register(['angular2/core', 'angular2/http', './ug-settings.service'], fun
             }],
         execute: function() {
             UGHttpService = (function () {
-                function UGHttpService(_http, _ugSettings) {
-                    this._http = _http;
+                function UGHttpService(_ugSettings, _http) {
                     this._ugSettings = _ugSettings;
-                    this.baseUrl = _ugSettings.getUGSettings().apiUrl;
+                    this._http = _http;
+                    this.baseUrl = _ugSettings.getBaseUrl();
                 }
                 UGHttpService.prototype.get = function (url) {
                     var observable = this._http.get(this.baseUrl + url);
@@ -52,7 +52,7 @@ System.register(['angular2/core', 'angular2/http', './ug-settings.service'], fun
                 ;
                 UGHttpService = __decorate([
                     core_1.Injectable(), 
-                    __metadata('design:paramtypes', [http_1.Http, ug_settings_service_1.UGSettings])
+                    __metadata('design:paramtypes', [ug_settings_service_1.UGSettings, http_1.Http])
                 ], UGHttpService);
                 return UGHttpService;
             }());

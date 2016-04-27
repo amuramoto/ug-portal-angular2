@@ -1,4 +1,4 @@
-System.register(['angular2/core', '../../ug-settings'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/http'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,27 +10,37 @@ System.register(['angular2/core', '../../ug-settings'], function(exports_1, cont
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, ug_settings_1;
+    var core_1, http_1;
     var UGSettings;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             },
-            function (ug_settings_1_1) {
-                ug_settings_1 = ug_settings_1_1;
+            function (http_1_1) {
+                http_1 = http_1_1;
             }],
         execute: function() {
             UGSettings = (function () {
-                function UGSettings() {
-                    this.UGSettings = new ug_settings_1.UGSettings();
+                function UGSettings(_http) {
+                    var _this = this;
+                    this._http = _http;
+                    this._http.get('/app/ug-settings.json')
+                        .map(function (res) {
+                        var ugSettings = res.json();
+                        _this.baseUrl = ugSettings.baseUrl + "/" + ugSettings.org + "/" + ugSettings.app;
+                        _this.maxTokenAge = ugSettings.maxTokenAge;
+                    });
                 }
-                UGSettings.prototype.getUGSettings = function () {
-                    return this.UGSettings;
+                UGSettings.prototype.getBaseUrl = function () {
+                    return this.baseUrl;
+                };
+                UGSettings.prototype.getMaxTokenAge = function () {
+                    return this.maxTokenAge;
                 };
                 UGSettings = __decorate([
                     core_1.Injectable(), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [http_1.Http])
                 ], UGSettings);
                 return UGSettings;
             }());

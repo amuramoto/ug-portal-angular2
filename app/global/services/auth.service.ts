@@ -1,6 +1,8 @@
 import { Injectable, Inject } from 'angular2/core';
-import { UGHttpService } from './ug-http.service';
+import { Response } from 'angular2/http';
 import { UGSettings } from './ug-settings.service';
+import { UGHttpService } from './ug-http.service';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class AuthService {
@@ -8,9 +10,9 @@ export class AuthService {
   access_token: string;
   maxTokenAge: number;
 
-  constructor (private _http: UGHttpService, private _ugSettings: UGSettings) {    
+  constructor (private _ugSettings:UGSettings, private _http: UGHttpService) {    
     this.access_token = localStorage.getItem('token');
-    this.maxTokenAge = _ugSettings.getUGSettings().maxTokenAge;
+    this.maxTokenAge = _ugSettings.getMaxTokenAge();
   }
 
   login(username, password) {
@@ -20,14 +22,16 @@ export class AuthService {
       "password": password
     };
 
-    return this._http.post('/token', credentials)
+    let observable: Observable<Object> = this._http.post('/token', credentials)
       .map(
-        res => {
+        (res:Response) => {
           this.setToken(res.json().access_token);
           return res.json().access_token;
         },
-        err => 'Invalid username or password'
-      )       
+        (err: string) => 'Invalid username or password'
+      );
+
+    return observable;       
   }
 
   logout() {
@@ -37,9 +41,6 @@ export class AuthService {
   }
 
   getToken() {
-    if (!this.isAuthenticated) {
-      return false;
-    } 
     return this.access_token;
   }
 
