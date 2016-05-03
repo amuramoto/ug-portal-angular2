@@ -37,14 +37,13 @@ System.register(['angular2/core', 'angular2/router', '../global/services/auth.se
                 LoginComponent.prototype.login = function () {
                     var _this = this;
                     if (!this.username || !this.password) {
-                        this.error = 'Username and Password Required';
+                        this.errorMsg = 'Username and Password Required';
                     }
                     else {
-                        !this.error;
-                        console.log(this._authService.login);
+                        !this.errorMsg;
                         this._authService.login(this.username, this.password)
                             .subscribe(function (res) { return _this._router.navigate(['Dashboard']); }, function (err) {
-                            _this.error = 'Invalid Username or Password';
+                            _this.errorMsg = 'Invalid Username or Password';
                             console.log(err);
                         });
                     }

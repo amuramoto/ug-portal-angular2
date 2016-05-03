@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/http'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/http', './ug-http.service', './auth.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/http'], function(exports_1, context_
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, http_1;
+    var core_1, http_1, ug_http_service_1, auth_service_1;
     var UGSettings;
     return {
         setters:[
@@ -19,28 +19,33 @@ System.register(['angular2/core', 'angular2/http'], function(exports_1, context_
             },
             function (http_1_1) {
                 http_1 = http_1_1;
+            },
+            function (ug_http_service_1_1) {
+                ug_http_service_1 = ug_http_service_1_1;
+            },
+            function (auth_service_1_1) {
+                auth_service_1 = auth_service_1_1;
             }],
         execute: function() {
             UGSettings = (function () {
-                function UGSettings(_http) {
-                    var _this = this;
+                function UGSettings(_http, _ugHttp, _auth) {
                     this._http = _http;
-                    this._http.get('/app/ug-settings.json')
-                        .map(function (res) {
-                        var ugSettings = res.json();
-                        _this.baseUrl = ugSettings.baseUrl + "/" + ugSettings.org + "/" + ugSettings.app;
-                        _this.maxTokenAge = ugSettings.maxTokenAge;
-                    });
+                    this._ugHttp = _ugHttp;
+                    this._auth = _auth;
                 }
-                UGSettings.prototype.getBaseUrl = function () {
-                    return this.baseUrl;
-                };
-                UGSettings.prototype.getMaxTokenAge = function () {
-                    return this.maxTokenAge;
+                UGSettings.prototype.loadUGSettings = function () {
+                    var _this = this;
+                    this._http.get('app/ug-settings.json')
+                        .subscribe(function (res) {
+                        res = res.json();
+                        var baseUrl = res.baseUrl + "/" + res.org + "/" + res.app;
+                        _this._ugHttp.setBaseUrl(baseUrl);
+                        _this._auth.setMaxTokenAge(res.maxTokenAge);
+                    });
                 };
                 UGSettings = __decorate([
                     core_1.Injectable(), 
-                    __metadata('design:paramtypes', [http_1.Http])
+                    __metadata('design:paramtypes', [http_1.Http, ug_http_service_1.UGHttpService, auth_service_1.AuthService])
                 ], UGSettings);
                 return UGSettings;
             }());

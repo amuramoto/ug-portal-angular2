@@ -5,7 +5,7 @@ export declare class LoginComponent {
     private _router;
     username: string;
     password: string;
-    error: string;
+    errorMsg: string;
     constructor(_authService: AuthService, _router: Router);
     ngOnInit(): void;
     login(): void;

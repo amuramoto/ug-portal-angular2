@@ -6,6 +6,7 @@ import { DataComponent } from './data/data.component';
 import { DashboardComponent } from './dashboard/dashboard.component'
 import { LoginComponent } from './login/login.component'
 import { AuthService } from './global/services/auth.service';
+import { UGSettings } from './global/services/ug-settings.service';
 
 @Component({
   selector: 'ug-portal',
@@ -21,11 +22,13 @@ import { AuthService } from './global/services/auth.service';
 
 export class AppComponent { 
   authenticated:boolean;
-  constructor (private _authService: AuthService, private _router: Router) { 
+  constructor (private _authService: AuthService, private _router: Router, 
+      private _ugSettings: UGSettings) { 
     this.authenticated;    
   } 
 
   ngOnInit(){
+    this._ugSettings.loadUGSettings();
     // Always check if user is authenticated
     this._router.subscribe(
       next => {

@@ -1,4 +1,4 @@
-System.register(['angular2/core', './ug-settings.service', './ug-http.service'], function(exports_1, context_1) {
+System.register(['angular2/core', './ug-http.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,26 +10,21 @@ System.register(['angular2/core', './ug-settings.service', './ug-http.service'],
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, ug_settings_service_1, ug_http_service_1;
+    var core_1, ug_http_service_1;
     var AuthService;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             },
-            function (ug_settings_service_1_1) {
-                ug_settings_service_1 = ug_settings_service_1_1;
-            },
             function (ug_http_service_1_1) {
                 ug_http_service_1 = ug_http_service_1_1;
             }],
         execute: function() {
             AuthService = (function () {
-                function AuthService(_ugSettings, _http) {
-                    this._ugSettings = _ugSettings;
+                function AuthService(_http) {
                     this._http = _http;
                     this.access_token = localStorage.getItem('token');
-                    this.maxTokenAge = _ugSettings.getMaxTokenAge();
                 }
                 AuthService.prototype.login = function (username, password) {
                     var _this = this;
@@ -49,6 +44,7 @@ System.register(['angular2/core', './ug-settings.service', './ug-http.service'],
                     localStorage.removeItem('token');
                     localStorage.removeItem('lastLogin');
                     delete this.access_token;
+                    this._http.delete('Authorization');
                 };
                 AuthService.prototype.getToken = function () {
                     return this.access_token;
@@ -57,6 +53,9 @@ System.register(['angular2/core', './ug-settings.service', './ug-http.service'],
                     localStorage.setItem('token', token);
                     localStorage.setItem('lastLogin', Date.now().toString());
                     this.access_token = token;
+                    this._http.setToken(token);
+                    this._http.get('/users')
+                        .subscribe(function (res) { return console.log(res); });
                 };
                 AuthService.prototype.isAuthenticated = function () {
                     var lastLoginTime = localStorage.getItem('lastLogin');
@@ -73,9 +72,12 @@ System.register(['angular2/core', './ug-settings.service', './ug-http.service'],
                     var loginAge = Date.now() - localStorage.getItem('lastLogin');
                     return loginAge / 1000;
                 };
+                AuthService.prototype.setMaxTokenAge = function (maxTokenAge) {
+                    this.maxTokenAge = maxTokenAge;
+                };
                 AuthService = __decorate([
                     core_1.Injectable(), 
-                    __metadata('design:paramtypes', [ug_settings_service_1.UGSettings, ug_http_service_1.UGHttpService])
+                    __metadata('design:paramtypes', [ug_http_service_1.UGHttpService])
                 ], AuthService);
                 return AuthService;
             }());

@@ -12,7 +12,7 @@ export class LoginComponent {
 
   username: string;
   password: string;
-  error: string;
+  errorMsg: string;
 
   constructor (private _authService: AuthService, private _router: Router) {
     
@@ -27,15 +27,14 @@ export class LoginComponent {
   login () {
 
     if (!this.username || !this.password) {
-      this.error = 'Username and Password Required';
+      this.errorMsg = 'Username and Password Required';
     } else {
-      !this.error;
-      console.log(this._authService.login)
+      !this.errorMsg;
       this._authService.login(this.username, this.password)
         .subscribe (
           res => this._router.navigate(['Dashboard']),
           err => {
-            this.error = 'Invalid Username or Password'
+            this.errorMsg = 'Invalid Username or Password'
             console.log(err)
           }
         )

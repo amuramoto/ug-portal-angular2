@@ -1,5 +1,7 @@
 import { Injectable } from 'angular2/core';
 import { Http, Response } from 'angular2/http';
+import { UGHttpService } from './ug-http.service';
+import { AuthService } from './auth.service';
 
 @Injectable()
 export class UGSettings {
@@ -7,20 +9,18 @@ export class UGSettings {
   baseUrl: string;
   maxTokenAge: number;
 
-  constructor (private _http: Http) {
-    this._http.get('/app/ug-settings.json')
-      .map((res: Response) => {
-        let ugSettings = res.json();
-        this.baseUrl = `${ugSettings.baseUrl}/${ugSettings.org}/${ugSettings.app}`;  
-        this.maxTokenAge = ugSettings.maxTokenAge;
-      });
+  constructor (private _http: Http, private _ugHttp: UGHttpService, private _auth: AuthService) {    
+    
   }
 
-  getBaseUrl () {
-    return this.baseUrl;
+  loadUGSettings () {
+    this._http.get('app/ug-settings.json')      
+      .subscribe(res => {
+        res = res.json();
+        let baseUrl: string = `${res.baseUrl}/${res.org}/${res.app}`;
+        this._ugHttp.setBaseUrl(baseUrl);
+        this._auth.setMaxTokenAge(res.maxTokenAge);
+      });      
   }
 
-  getMaxTokenAge () {
-    return this.maxTokenAge;
-  }
 }
